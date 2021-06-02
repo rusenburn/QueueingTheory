@@ -1,0 +1,72 @@
+<div class="form-provider-page">
+  <div class="card p-2">
+    <div class="columns is-multiline">
+      <div class="column is-8 is-offset-2">
+        <h2 class="subtitle">Please provide us with values.</h2>
+      </div>
+      <div class="column is-8 is-offset-2">
+        <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+          <div class="field">
+            <label for="servers" class="label">Number of Servers</label>
+            <div class="control has-icons-left">
+              <input
+                type="number"
+                formControlName="servers"
+                name="servers"
+                id="servers"
+                class="input"
+              />
+              <span class="icon is-small is-left">
+                <i>s</i> 
+              </span>
+              <span *ngIf="inputForm?.errors?.rhoLessThanServers" class="help has-text-danger is-small">
+                s must be bigger than &#955;/&#956;
+              </span>
+            </div>
+            
+          </div>
+
+          <div class="field">
+            <label for="arrivals" class="label">Arrivals per unit of time</label>
+            <div class="control has-icons-left">
+              <input
+                type="number"
+                formControlName="arrivals"
+                name="arrivals"
+                id="arrivals"
+                class="input"
+              />
+              <span class="icon is-small is-left">
+                <i>&#955;</i>
+              </span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="services" class="label">Service rate</label>
+            <div class="control has-icons-left">
+              <input
+                type="number"
+                formControlName="services"
+                name="services"
+                id="services"
+                class="input"
+              />
+              <span class="icon is-small is-left">
+                <i>&#956;</i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control buttons">
+              <button type="submit" [disabled]="inputForm?.invalid" class="button is-dark">
+                Add Case
+              </button>
+              <a routerLink="/byCalc" class="button is-primary is-outlined">I dont have values</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

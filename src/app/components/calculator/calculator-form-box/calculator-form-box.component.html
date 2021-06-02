@@ -1,0 +1,59 @@
+<div class="calculator-form-box-page">
+  <div class="columns">
+    <div class="column is-4 is-offset-4">
+      <div class="card p-2">
+        <form [formGroup]="form" action="get" (ngSubmit)="onSubmit()">
+          <div class="field">
+            <label for="startingLength" class="label">Starting length</label>
+            <div class="control has-icons-left">
+              <input
+                type="number"
+                name="startingLength"
+                id="startingLength"
+                formControlName="startingLength"
+                autocomplete="off"
+                class="input"
+              />
+              <span class="icon is-small is-left">
+                <i>v</i>
+              </span>
+            </div>
+          </div>
+
+          <label for="duration" class="label">Total Duration</label>
+          <div class="field has-addons">
+            <div class="control is-expanded">
+              <input
+                type="number"
+                name="duration"
+                id="duration"
+                formControlName="duration"
+                autocomplete="off"
+                class="input"
+              />
+            </div>
+            <div class="control">
+              <span class="select">
+                <select
+                  name="durationUnit"
+                  id="durationUnit"
+                  formControlName="durationUnit"
+                >
+                  <option [value]="second">Seconds</option>
+                  <option [value]="minute">Minutes</option>
+                  <option [value]="hour">Hours</option>
+                </select>
+              </span>
+            </div>
+          </div>
+
+          <div class="field is-grouped is-grouped-centered">
+              <div class="control">
+                  <button type="submit" class="button is-dark is-centered" [disabled]="form?.invalid">Start</button>
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

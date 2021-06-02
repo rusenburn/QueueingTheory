@@ -1,0 +1,107 @@
+<div class="page-queue-calculator">
+  <div class="columns is-multiline">
+    <div class="column is-12">
+      <div class="container">
+        <app-calculator-form-box
+          *ngIf="!running"
+          (formSubmit)="onGettingOptions($event)"
+        ></app-calculator-form-box>
+      </div>
+    </div>
+    <!-- <div class="column is-6 is-offset-3" *ngIf="!running">
+      <button (click)="start()" class="button is-primary is-large is-fullwidth">Start</button>
+    </div> -->
+    <div class="column is-4 is-offset-4" *ngIf="running">
+      <div class="columns is-multiline p-2">
+        <div class="column is-12">
+          <h3 class="subtitle has-text-centered">
+            {{ currentLength }}
+            {{ currentLength > 1 ? "Customers" : "Customer" }}
+          </h3>
+        </div>
+        <div class="column is-12">
+          <button
+            class="button is-link is-outlined is-large is-fullwidth"
+            (click)="enqueue()"
+          >
+            Enqueue(+1)
+          </button>
+        </div>
+        <div class="column is-12">
+          <h2 class="title has-text-centered">
+            {{ timeRemaining?.toFixed(0) }} Seconds
+          </h2>
+        </div>
+        <div class="column is-12">
+          <button
+            class="button is-success is-outlined is-large is-fullwidth"
+            (click)="dequeue()"
+            [disabled]="currentLength === 0"
+          >
+            Dequeue(-1)
+          </button>
+        </div>
+        <div class="column is-12">
+          <button
+            class="button is-danger is-fullwidth is-large"
+            (click)="stop()"
+          >
+            Stop Early
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="column is-8 is-offset-2">
+      <div class="card">
+        <div class="columns is-multiline m-2">
+          <div class="column is-12">
+            <h2 class="title has-text-centered">Results</h2>
+          </div>
+          <div class="column is-12">
+            <h4 class="subtitle has-text-centered">
+              Total customers : {{ totalCustomers }}
+            </h4>
+          </div>
+          <div class="column is-12" *ngIf="!running && byActualMu">
+            <div class="columns is-multiline">
+              <div class="column is-6">Mean arrival rate (&#955;)</div>
+              <div class="column is-6">
+                {{ byActualMu.getLambda().toFixed(2) }}
+              </div>
+              <div class="column is-6">Mean service rate (&#956;)</div>
+              <div class="column is-6">{{ byActualMu.getMu().toFixed(2) }}</div>
+              <div class="column is-6">Mean system length (L)</div>
+              <div class="column is-6">{{ byActualMu.getL().toFixed(2) }}</div>
+              <div class="column is-4 is-offset-4">
+                <button class="button is-dark is-fullwidth" (click)="submit(byActualMu)">use these values</button>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <div class="column is-12" *ngIf="!running && byActualMeanLength">
+            <div class="columns is-multiline">
+              <div class="column is-6">Mean arrival rate(&#955;)</div>
+              <div class="column is-6">
+                {{ byActualMeanLength.getLambda().toFixed(2) }}
+              </div>
+              <div class="column is-6">Mean service rate(&#956;)</div>
+              <div class="column is-6">
+                {{ byActualMeanLength.getMu().toFixed(2) }}
+              </div>
+              <div class="column is-6">Mean system length(L)</div>
+              <div class="column is-6">
+                {{ byActualMeanLength.getL().toFixed(2) }}
+              </div>
+              <div class="column is-4 is-offset-4">
+                <button class="button is-dark is-fullwidth"(click)="submit(byActualMeanLength)">
+                  use these values
+                </button>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

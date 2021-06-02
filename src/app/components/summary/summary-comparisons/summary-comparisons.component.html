@@ -1,0 +1,55 @@
+<div class="summary-box-page">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Number of servers</td>
+
+                <td *ngFor="let caseSummary of caseSummaries">{{caseSummary.numberOfServers}}</td>
+            </tr>
+
+            <tr>
+                <td>Mean Arrival Rate</td>
+                <td *ngFor="let caseSummary of caseSummaries">{{caseSummary.meanArrivalRate?.toFixed(2)}}</td>
+            </tr>
+            <tr>
+                <td>Mean Service Rate</td>
+                <td *ngFor="let caseSummary of caseSummaries">{{caseSummary.meanServiceRate?.toFixed(2)}}</td>
+            </tr>
+            <tr>
+                <td>Utilization Factor</td>
+                <td *ngFor="let caseSummary of caseSummaries">{{caseSummary.utilizationFactor.toFixed(2)}}</td>
+            </tr>
+            <tr>
+                <td>System Length</td>
+                <td *ngFor="let caseSummary of caseSummaries">{{caseSummary.systemLength.toFixed(2)}}</td>
+            </tr>
+            
+            <tr>
+                <td>Queue Length</td>
+                <td *ngFor="let caseSummary of caseSummaries">{{caseSummary.queueLength.toFixed(2)}}</td>
+            </tr>
+
+            <tr>
+                <td>System waiting time</td>
+                <td *ngFor="let caseSummary of caseSummaries">{{caseSummary.systemWaitingTime.toFixed(2)}}</td>
+            </tr>
+
+            <tr>
+                <td>Queue waiting time</td>
+                <td *ngFor="let caseSummary of caseSummaries">{{caseSummary.queueWaitingTime.toFixed(2)}}</td>
+            </tr>
+            <tr>
+                <td>P0</td>
+                <td *ngFor="let caseSummary of caseSummaries">{{caseSummary.probabilityOf0Customers.toFixed(2)}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td *ngFor="let caseSummary of caseSummaries;index as i"><button (click)="onDelete(i)">delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngFor="let caseSummary of caseSummaries;index as i">
+        <app-summary-box [caseSummary]=caseSummary></app-summary-box>
+    </div>
+</div>

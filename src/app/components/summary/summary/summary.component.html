@@ -1,0 +1,104 @@
+<div class="page-summary">
+  <div class="columns is-multiline">
+    <div class="column is-8 is-offset-2">
+      <div class="card p-2">
+        <div class="columns is-multiline">
+          <div class="column is-12">
+            <h1 class="title has-text-centered">Summary</h1>
+          </div>
+          <div class="column is-6">
+            <p>Number of servers (s)</p>
+          </div>
+
+          <div class="column is-6">
+            <p>
+              {{ caseSummary?.numberOfServers }}
+              {{ caseSummary?.numberOfServers > 1 ? "Servers" : "Server" }}
+            </p>
+          </div>
+
+          <div class="column is-6">
+            <p>Utilization Factor* (&rho;)</p>
+          </div>
+          <div class="column is-6">
+            <p>{{ caseSummary?.utilizationFactor?.toFixed(2) }}</p>
+          </div>
+
+          <div class="column is-6">
+            <p>Mean arrival rate (&#955;)</p>
+          </div>
+          <div class="column is-6">
+            <p>
+              {{ caseSummary?.meanArrivalRate?.toFixed(2) }} customers/timeUnit
+            </p>
+          </div>
+
+          <div class="column is-6">
+            <p>Mean service rate (&#956;)</p>
+          </div>
+          <div class="column is-6">
+            <p>
+              {{ caseSummary?.meanServiceRate?.toFixed(2) }} customers/timeUnit
+            </p>
+          </div>
+
+          <div class="column is-6">
+            <p>System Length (L)</p>
+          </div>
+          <div class="column is-6">
+            <p>{{ caseSummary?.systemLength?.toFixed(2) }} cutsomers</p>
+          </div>
+
+          <div class="column is-6">
+            <p>Queue Length (Lq)</p>
+          </div>
+          <div class="column is-6">
+            <p>{{ caseSummary?.queueLength?.toFixed(2) }} customers</p>
+          </div>
+          <div class="column is-6">
+            <p>Lq/L</p>
+          </div>
+          <div class="column is-6">
+            <div class="bar">
+              <div class="barFill" [style.width.%]="lqPercentage">
+                <p>%{{ lqPercentage }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="column is-6">
+            <p>System waiting time (W)</p>
+          </div>
+          <div class="column is-6">
+            <p>{{ caseSummary?.systemWaitingTime?.toFixed(2) }} time unit</p>
+          </div>
+          <div class="column is-6">
+            <p>Queue waiting time (Wq)</p>
+          </div>
+          <div class="column is-6">
+            <p>{{ caseSummary?.queueWaitingTime?.toFixed(2) }} time unit</p>
+          </div>
+          <div class="column is-6">Wq/W</div>
+          <div class="column is-6">
+            <div class="bar">
+              <div class="barFill" [style.width.%]="wqPercentage">
+                <p>%{{ wqPercentage }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="column is-6">
+            <p>P0</p>
+          </div>
+          <div class="column is-6">
+            <p>%{{ p0.toFixed(2) }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column is-12">
+      <app-summary-box
+        [caseSummary]="caseSummary"
+        *ngIf="caseSummary"
+      ></app-summary-box>
+    </div>
+  </div>
+</div>

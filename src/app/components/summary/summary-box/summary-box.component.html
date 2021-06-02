@@ -1,0 +1,31 @@
+<div class="summary-box-page">
+    <div class="columns is-multiline">
+        <div class="column is-4 " *ngIf='waitingsChart'>
+            <div class="card">
+                <div class="columns is-multiline">
+                    <div class="column is-12">
+                        <h2 class="subtitle has-text-centered">Time Spent On</h2>
+                    </div>
+                    <div class="column is-12">
+                        <app-chart-box [chart]='waitingsChart'></app-chart-box>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="column is-4" *ngIf='probabilitiesChart'>
+            <div class="columns is-multiline">
+                <div class="card">
+                    <div class="column is-12">
+                        <h2 class="subtitle has-text-centered">Pn</h2>
+                    </div>
+                    <div class="column is-12">
+                        <app-chart-box  [chart]='probabilitiesChart'></app-chart-box>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
